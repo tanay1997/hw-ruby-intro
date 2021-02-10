@@ -22,11 +22,8 @@ def max_2_sum arr
   end
 
   # Array with length > 2
-  ans = 0
   sortedArr = arr.sort
-  ans = sortedArr[-1] + sortedArr[-2]
-  return ans
-
+  return  (sortedArr[-1] + sortedArr[-2])
 end
 
 def sum_to_n? arr, n
@@ -47,10 +44,10 @@ def sum_to_n? arr, n
       return true
     end
 
-    if (result < n)
-      head += 1
-    else
+    if (result >= n)
       tail -= 1
+    else
+      head += 1
     end
   end
 
@@ -70,9 +67,7 @@ def starts_with_consonant? s
     return false
   end
 
-  regVar = /\A[^aeiouAEIOU]/i 
-  return s.match?(regVar)
-
+  return s.match?(/\A[^aeiouAEIOU]/i) 
 end
 
 def binary_multiple_of_4? s
@@ -99,6 +94,11 @@ end
 # Part 3
 
 class BookInStock
+  
+  # getters and setters 
+  attr_accessor :isbn
+  attr_accessor :price
+
   # Constructor Initialization
   def initialize(isbn, price)
 
@@ -114,34 +114,10 @@ class BookInStock
     @price = price
   end
 
-  def isbn=(isbn)
-    # Base condition
-    if (isbn == nil || isbn.size == 0)
-      raise ArgumentError, 'Invalid ISBN'
-    end
-
-    @isbn = isbn
-  end
-
-  def price=(price)
-    # Base condition
-    if (price == nil || price <= 0)
-      raise ArgumentError, 'Invalid price'
-    end
-
-    @price = price
-  end
-
-  def isbn
-    @isbn
-  end
-
-  def price
-    @price
-  end
-
   def price_as_string
     displayPrice ="%.2f" %  @price
     return "$"+displayPrice
   end
+
 end
+
