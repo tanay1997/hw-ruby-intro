@@ -24,6 +24,7 @@ def max_2_sum arr
   # Array with length > 2
   sortedArr = arr.sort
   return  (sortedArr[-1] + sortedArr[-2])
+
 end
 
 def sum_to_n? arr, n
@@ -40,11 +41,11 @@ def sum_to_n? arr, n
   while head < tail
     result = sortedArr[head] + sortedArr[tail]
 
-    if (result == n)
+    if result == n
       return true
     end
 
-    if (result >= n)
+    if result >= n
       tail -= 1
     else
       head += 1
@@ -78,16 +79,12 @@ def binary_multiple_of_4? s
 
   # Binary to Decimal conversion
   decimalNumber = 0
-  s.split("").each do |i|
-    decimalNumber += (i == "1") ? 1 : 0
+  s.each_char { |d|
+    decimalNumber += (d == "1") ? 1 : 0
     decimalNumber *= 2
-  end
+  }
 
-  if (decimalNumber % 4 == 0)
-   return true
-  end
-
-  return false
+  return decimalNumber % 4 == 0
 
 end
 
@@ -118,6 +115,5 @@ class BookInStock
     displayPrice ="%.2f" %  @price
     return "$"+displayPrice
   end
-
 end
 
